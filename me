@@ -1,0 +1,16 @@
+超市管理系统教学源码备份
+
+没有使用maven
+mysql+eclipse+jdk1.8+tomcat 7
+
+struts +spring + hibernate
+
+使用须知
+
+1、修改数据库名，数据库用户名，数据库密码
+2、执行sql文件，如果需要设置自己的数据库，请修改sql文件中的USE
+3、由于使用的是hibernate，如果直接运行项目的话，会根据 hbm.xml文件中的catalog="superMarket"创建数据库，所以，如果想指定自己的数据库，抢删除hbm文件中的该配置
+4、运行项目后，由于数据库没有数据，且保存数据时没有对用户密码进行MD5算法加密，请自己添加一个用户，密码即可登录
+
+项目入口
+http://localhost:8080/ssh-sm/jsp/admin/login.jsp

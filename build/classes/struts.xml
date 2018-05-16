@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+		<constant name="struts.action.extension" value="action"></constant>
+		
+		<!-- 配置action -->
+		<package name="ssh" extends="struts-default" namespace="/">
+			<!-- 定义拦截器 -->
+			<interceptors>
+				<interceptor name="privilegeInterceptor" class="com.itheima.web.filter.PrivilegeInterceptor"></interceptor>
+			</interceptors>
+			
+			<global-results>
+				<result name="login">/login.jsp</result>
+			</global-results>
+		<action name="adminAction_*" class="com.bzu.action.AdminAction" method="{1}">
+
+			<result name="loginsuccess">/jsp/admin/default.jsp</result>
+			<result name="success">/jsp/admin/operaSuccess.jsp</result>
+			<result name="input">/jsp/admin/login.jsp</result>
+		</action>
+		<action name="employerAction_*" class="com.bzu.action.EmployerAction" method="{1}">
+
+			<result name="success"> /jsp/admin/employerlist.jsp</result>
+
+			<result name="deletesuccess" type="redirectAction">employerAction_emplyerList.action
+			</result>
+			<result name="dilog"> /jsp/admin/update_employerdilog.jsp</result>
+			<result name="operasuccess">/jsp/admin/operaSuccess.jsp</result>
+			<result name="worklist">/jsp/admin/todaywork.jsp</result>
+			<result name="employerworks" type="redirectAction">employerAction_workList.action
+			</result>
+			<result name="todayworklist">/jsp/admin/todayworklist.jsp</result>
+			<result name="workMap">/jsp/admin/workMap.jsp</result>
+
+		</action>
+		<action name="goodsAction_*" class="com.bzu.action.GoodsAction" method="{1}">
+
+			<result name="goodslist">/jsp/admin/goodsList.jsp</result>
+			
+			<result name="deletesuccess" type="redirectAction">goodsAction_goodsList.action</result>
+			
+			<result name="dilog"> /jsp/admin/update_goodsdilog.jsp</result>
+			<result name="addGoods"> /jsp/admin/addGoods.jsp</result>
+			
+			<result name="operasuccess">/jsp/admin/operaSuccess.jsp</result>
+
+		</action>
+		<action name="intoGoodsAction_*" class="com.bzu.action.IntoGoodsAction" method="{1}">
+			<result name="addIntoGoods"> /jsp/admin/addIntoGoods.jsp</result>
+			<result name="operasuccess">/jsp/admin/operaSuccess.jsp</result>
+			<result name="intoGoodsList">/jsp/admin/intoGoodList.jsp</result>
+			<result name="deletesuccess" type="redirectAction">intoGoodsAction_intoGoodsList.action</result>
+			<result name="dialog" >/jsp/admin/updateIntoGoods.jsp</result>
+		</action>
+		
+		<action name="employerWageAction_*" class="com.bzu.action.EmployerWageAction" method="{1}">
+		
+			<result name="employerWageList">/jsp/admin/employerWageList.jsp</result>
+			<result name="createWageSuccess">/jsp/admin/operaSuccess.jsp</result>
+			
+			<result name="spendlist">/jsp/admin/goodsSpendList.jsp</result>
+		
+		</action>
+		
+		<action name="inputerAction_*" class="com.bzu.action.InputerAction" method="{1}">
+		
+			<result name="inputerlist">/jsp/admin/inputerList.jsp</result>
+			<result name="operasuccess">/jsp/admin/operaSuccess.jsp</result>
+			<result name="dilog">/jsp/admin/update_inputer.jsp</result>
+			
+		</action>
+	</package>
+</struts>    
